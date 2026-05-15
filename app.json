@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DonaVita Torino",
-    "slug": "donavita-torino",
+    "name": "BloodDonate Torino",
+    "slug": "blood-donation-torino",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

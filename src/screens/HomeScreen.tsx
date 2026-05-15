@@ -37,7 +37,7 @@ export const HomeScreen: React.FC = () => {
 
       <View style={styles.topBar}>
         <View>
-          <Text style={styles.topBarTitle}>DonaVita Torino</Text>
+          <Text style={styles.topBarTitle}>BloodDonate Torino</Text>
           <Text style={styles.topBarSub}>Centro Donazioni Sangue</Text>
         </View>
         <View style={styles.topBarRight}>

@@ -173,7 +173,7 @@ export const ProfileScreen: React.FC = () => {
           <Text style={styles.logoutText}>Esci dall'account</Text>
         </TouchableOpacity>
 
-        <Text style={styles.version}>DonaVita Torino v1.0.0</Text>
+        <Text style={styles.version}>BloodDonate Torino v1.0.0</Text>
       </ScrollView>
     </SafeAreaView>
   );

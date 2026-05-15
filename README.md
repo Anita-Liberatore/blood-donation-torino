@@ -1,4 +1,4 @@
-# DonaVita Torino 🩸
+# BloodDonate Torino 🩸
 
 App React Native per la prenotazione delle donazioni di sangue a Torino e provincia.
 
