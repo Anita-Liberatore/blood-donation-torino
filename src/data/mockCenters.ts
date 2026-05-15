@@ -1,0 +1,73 @@
+import { DonationCenter } from '../types';
+import { Colors } from '../theme/colors';
+
+export const mockCenters: DonationCenter[] = [
+  {
+    id: 'c_001',
+    name: 'AVIS Comunale Torino',
+    shortName: 'AVIS Torino',
+    address: 'Via Nizza, 131',
+    city: 'Torino',
+    phone: '011 669 7111',
+    openingHours: 'Lun-Sab 7:30 - 11:30',
+    availableTypes: ['Sangue Intero', 'Plasma', 'Piastrine'],
+    rating: 4.8,
+    distance: '1.2 km',
+    color: Colors.primary,
+  },
+  {
+    id: 'c_002',
+    name: 'S.C. Immunoematologia - Molinette',
+    shortName: 'Ospedale Molinette',
+    address: 'C.so Bramante, 88',
+    city: 'Torino',
+    phone: '011 633 3111',
+    openingHours: 'Lun-Ven 7:00 - 12:00',
+    availableTypes: ['Sangue Intero', 'Plasma'],
+    rating: 4.6,
+    distance: '2.4 km',
+    color: '#2980B9',
+  },
+  {
+    id: 'c_003',
+    name: 'Centro Trasfusionale - CTO',
+    shortName: 'CTO Torino',
+    address: 'Via Zuretti, 29',
+    city: 'Torino',
+    phone: '011 693 5111',
+    openingHours: 'Lun-Sab 7:30 - 12:00',
+    availableTypes: ['Sangue Intero', 'Piastrine'],
+    rating: 4.5,
+    distance: '3.1 km',
+    color: '#8E44AD',
+  },
+  {
+    id: 'c_004',
+    name: "Ospedale San Giovanni Bosco",
+    shortName: 'San Giovanni Bosco',
+    address: "P.za Donatore di Sangue, 3",
+    city: 'Torino',
+    phone: '011 240 2111',
+    openingHours: 'Lun-Sab 7:00 - 11:30',
+    availableTypes: ['Sangue Intero', 'Plasma'],
+    rating: 4.4,
+    distance: '4.2 km',
+    color: '#27AE60',
+  },
+  {
+    id: 'c_005',
+    name: 'AVIS Moncalieri',
+    shortName: 'AVIS Moncalieri',
+    address: 'Via Roma, 120',
+    city: 'Moncalieri (TO)',
+    phone: '011 641 1111',
+    openingHours: 'Mar-Sab 7:30 - 11:00',
+    availableTypes: ['Sangue Intero'],
+    rating: 4.7,
+    distance: '6.8 km',
+    color: '#E67E22',
+  },
+];
+
+export const getCenter = (id: string): DonationCenter | undefined =>
+  mockCenters.find((c) => c.id === id);

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "donavita-torino",
+    "name": "DonaVita Torino",
     "slug": "donavita-torino",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#C0392B"
     },
     "ios": {
       "supportsTablet": true
