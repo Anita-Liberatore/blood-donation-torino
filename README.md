@@ -68,7 +68,9 @@ src/
 ## Avvio
 
 ```bash
-npm install
+git clone https://github.com/Anita-Liberatore/blood-donation-torino.git
+cd blood-donation-torino
+npm install --legacy-peer-deps
 npx expo start
 ```
 
