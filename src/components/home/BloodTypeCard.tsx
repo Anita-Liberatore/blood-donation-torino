@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { BloodType, DonorLevel } from '../../types';
 import { Colors } from '../../theme/colors';
@@ -26,12 +25,7 @@ export const BloodTypeCard: React.FC<BloodTypeCardProps> = ({
   totalDonations,
   firstName,
 }) => (
-  <LinearGradient
-    colors={[Colors.primaryDark, Colors.primary, Colors.primaryLight]}
-    start={{ x: 0, y: 0 }}
-    end={{ x: 1, y: 1 }}
-    style={styles.gradient}
-  >
+  <View style={styles.gradient}>
     <View style={styles.topRow}>
       <View>
         <Text style={styles.greeting}>Ciao, {firstName}!</Text>
@@ -68,7 +62,7 @@ export const BloodTypeCard: React.FC<BloodTypeCardProps> = ({
         <Text style={styles.statsLabel}>Livello</Text>
       </View>
     </View>
-  </LinearGradient>
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -76,6 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: BorderRadius.xl,
     padding: Spacing.lg,
     marginHorizontal: Spacing.md,
+    backgroundColor: Colors.primary,
   },
   topRow: {
     flexDirection: 'row',

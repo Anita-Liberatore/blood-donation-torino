@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Avatar } from '../components/common/Avatar';
 import { Card } from '../components/common/Card';
 import { DonorBadge } from '../components/profile/DonorBadge';
@@ -51,12 +50,7 @@ export const ProfileScreen: React.FC = () => {
     <SafeAreaView style={styles.safe} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
 
-        <LinearGradient
-          colors={[Colors.primaryDark, Colors.primary]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.heroGradient}
-        >
+        <View style={styles.heroGradient}>
           <View style={styles.heroContent}>
             <Avatar
               initials={user.avatarInitials}
@@ -77,7 +71,7 @@ export const ProfileScreen: React.FC = () => {
               <Ionicons name="create-outline" size={18} color={Colors.white} />
             </TouchableOpacity>
           </View>
-        </LinearGradient>
+        </View>
 
         <View style={styles.typeGrid}>
           {Object.entries(typeCount).map(([type, count]) => (
@@ -182,7 +176,7 @@ export const ProfileScreen: React.FC = () => {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: Colors.background },
   scroll: { paddingBottom: 40 },
-  heroGradient: { padding: Spacing.lg, paddingBottom: Spacing.xl },
+  heroGradient: { padding: Spacing.lg, paddingBottom: Spacing.xl, backgroundColor: Colors.primary },
   heroContent: { flexDirection: 'row', alignItems: 'center', gap: Spacing.md },
   heroText: { flex: 1 },
   heroName: { fontSize: 20, fontWeight: '800', color: Colors.white, letterSpacing: -0.3 },
