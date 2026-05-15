@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -13,7 +14,7 @@ import { Card } from '../components/common/Card';
 import { DonorBadge } from '../components/profile/DonorBadge';
 import { DonationTimeline } from '../components/profile/DonationTimeline';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { mockUser } from '../data/mockUser';
+import { useUser } from '../hooks/useUser';
 import { mockDonations } from '../data/mockDonations';
 import { Colors } from '../theme/colors';
 import { BorderRadius, Spacing } from '../theme/spacing';
@@ -40,7 +41,25 @@ export const ProfileScreen: React.FC = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [showAllDonations, setShowAllDonations] = useState(false);
 
-  const user = mockUser;
+  const { user, loading, error } = useUser();
+
+  if (loading) {
+    return (
+      <SafeAreaView style={[styles.safe, { alignItems: 'center', justifyContent: 'center' }]}>
+        <ActivityIndicator size="large" color={Colors.primary} />
+        <Text style={{ marginTop: Spacing.sm, color: Colors.textSecondary }}>Caricamento...</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (error || !user) {
+    return (
+      <SafeAreaView style={[styles.safe, { alignItems: 'center', justifyContent: 'center' }]}>
+        <Ionicons name="alert-circle-outline" size={48} color={Colors.primary} />
+        <Text style={{ marginTop: Spacing.sm, color: Colors.textSecondary }}>{error ?? 'Utente non trovato'}</Text>
+      </SafeAreaView>
+    );
+  }
   const typeCount = mockDonations.reduce<Record<string, number>>((acc, d) => {
     acc[d.donationType] = (acc[d.donationType] ?? 0) + 1;
     return acc;
@@ -94,6 +113,8 @@ export const ProfileScreen: React.FC = () => {
             <InfoRow icon="calendar-outline" label="Data di nascita" value={user.dateOfBirth} iconColor="#8E44AD" iconBg="#E8DAEF" />
             <InfoRow icon="mail-outline" label="Email" value={user.email} iconColor={Colors.success} iconBg={Colors.successLight} />
             <InfoRow icon="call-outline" label="Telefono" value={user.phone} iconColor={Colors.warning} iconBg={Colors.warningLight} />
+            <InfoRow icon="location-outline" label="Città" value={user.city} iconColor={Colors.info} iconBg={Colors.infoLight} />
+
             <View style={[info.row, { borderBottomWidth: 0 }]}>
               <View style={[info.iconBox, { backgroundColor: '#FDEBD0' }]}>
                 <Ionicons name="barbell-outline" size={18} color={Colors.warning} />
