@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -140,12 +139,13 @@ export const ProfileScreen: React.FC = () => {
                   <Text style={setting.sub}>Ricevi avvisi per le donazioni</Text>
                 </View>
               </View>
-              <Switch
-                value={notificationsEnabled}
-                onValueChange={setNotificationsEnabled}
-                trackColor={{ false: Colors.border, true: Colors.primary + '60' }}
-                thumbColor={notificationsEnabled ? Colors.primary : Colors.textLight}
-              />
+              <TouchableOpacity
+                onPress={() => setNotificationsEnabled(!notificationsEnabled)}
+                activeOpacity={0.8}
+                style={[toggle.track, notificationsEnabled && toggle.trackOn]}
+              >
+                <View style={[toggle.thumb, notificationsEnabled && toggle.thumbOn]} />
+              </TouchableOpacity>
             </View>
             {[
               { icon: 'shield-outline' as const, label: 'Privacy e dati', sub: 'Gestisci i tuoi dati', color: Colors.success, bg: Colors.successLight },
@@ -260,4 +260,28 @@ const setting = StyleSheet.create({
   icon: { width: 36, height: 36, borderRadius: BorderRadius.sm, alignItems: 'center', justifyContent: 'center' },
   label: { fontSize: 14, color: Colors.text, fontWeight: '500' },
   sub: { fontSize: 12, color: Colors.textLight, marginTop: 1 },
+});
+
+const toggle = StyleSheet.create({
+  track: {
+    width: 46,
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: Colors.border,
+    justifyContent: 'center',
+    paddingHorizontal: 3,
+  },
+  trackOn: { backgroundColor: Colors.primary },
+  thumb: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: Colors.white,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  thumbOn: { alignSelf: 'flex-end' },
 });
